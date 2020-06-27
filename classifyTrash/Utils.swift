@@ -11,8 +11,8 @@ func showSuccess(msg:String){
 func showNotice(msg:String){
     SCLAlertView().showNotice("Loading",subTitle:msg)
 }
-func showInfo(msg:String){
-    SCLAlertView().showInfo("Here you go",subTitle:msg)
+func showInfo(msg:String,title:String){
+    SCLAlertView().showInfo(title,subTitle:msg)
 }
 func splitString(str:String,delimiter:String) -> String{
     var returnString = ""
@@ -103,8 +103,8 @@ extension UIImageView {
     func roundedImage() {
         self.layer.cornerRadius = (self.frame.size.width) / 2;
         self.clipsToBounds = true
-        self.layer.borderWidth = 3.0
-        self.layer.borderColor = UIColor.green.cgColor
+        self.layer.borderWidth = 0
+        self.layer.borderColor = UIColor.white.cgColor
     }
 }
 

@@ -5,7 +5,7 @@
 //  Created by Nirbhay Singh on 26/06/20.
 //  Copyright © 2020 Nirbhay Singh. All rights reserved.
 //
-var globalUser:GarboUser!
+var globalUser=GarboUser(name: "", email: "", plasticScanned: 0, itemsScanned: 0)
 import UIKit
 import Firebase
 import JGProgressHUD
@@ -37,7 +37,10 @@ class firstViewController: UIViewController {
                 let username = value?["name"] as? String ?? "Error"
                 let plasticsScanned = value?["plastics-scanned"] as? Int ?? 0
                 let itemsScanned = value?["items-scanned"] as? Int ?? 0
-                globalUser = GarboUser(name: username, email: self.emailTf.text!, plasticScanned: plasticsScanned, itemsScanned: itemsScanned)
+                globalUser.name = username
+                globalUser.email = Auth.auth().currentUser?.email
+                globalUser.itemsScanned = itemsScanned
+                globalUser.plasticScanned = plasticsScanned
                 print("UserDataFetchedWithSuccess")
                 self.performSegue(withIdentifier: "loginComplete", sender: nil)
               }) { (error) in
@@ -73,7 +76,10 @@ class firstViewController: UIViewController {
                         let username = value?["name"] as? String ?? "Error"
                         let plasticsScanned = value?["plastics-scanned"] as? Int ?? 0
                         let itemsScanned = value?["items-scanned"] as? Int ?? 0
-                        globalUser = GarboUser(name: username, email: self!.emailTf.text!, plasticScanned: plasticsScanned, itemsScanned: itemsScanned)
+                        globalUser.name = username
+                        globalUser.email = Auth.auth().currentUser?.email
+                        globalUser.itemsScanned = itemsScanned
+                        globalUser.plasticScanned = plasticsScanned
                         print("UserDataFetchedWithSuccess")
                         self!.performSegue(withIdentifier: "loginComplete", sender: nil)
                       }) { (error) in
