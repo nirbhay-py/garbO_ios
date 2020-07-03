@@ -9,6 +9,7 @@ target 'classifyTrash' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Database'
 	pod 'SCLAlertView'
+	pod 'Charts'
 	pod 'SPPermissions/Camera'
 	pod 'SPPermissions/PhotoLibrary'
 	pod 'Firebase/Auth'

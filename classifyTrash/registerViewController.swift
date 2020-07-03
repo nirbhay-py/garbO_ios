@@ -18,7 +18,7 @@ class registerViewController: UIViewController {
     @IBOutlet weak var pswdTf: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround() 
     }
     @IBAction func registerBtnPressed(_ sender: Any) {
         if(nameTf.text==""||emailTf.text==""||pswdTf.text==""){

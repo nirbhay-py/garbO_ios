@@ -27,7 +27,6 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     var img:UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.roundedImage()
         changeState(state: true,plas:true)
         print("globalUserEmail:\(String(describing: globalUser.email))")
     }
@@ -46,7 +45,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
 
     @IBAction func camBtnPressed(_ sender: Any) {
         let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
+        vc.sourceType = .camera
         vc.allowsEditing = true
         vc.delegate = self
         present(vc, animated: true)
@@ -56,7 +55,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         showInfo(msg: """
             You've scanned \(globalUser.itemsScanned!) items with garbO
             
-            Out of which  \(globalUser.plasticScanned!) were plastic items.
+            Out of which \(globalUser.plasticScanned!) were plastic items.
             """, title: "Your stats")
     }
     @IBAction func doneBtnPressed(_ sender: Any) {
@@ -186,6 +185,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         }
         print("OriginalSize:\(image.size)")
         self.imageView.image = image
+        self.imageView.roundedImage()
         self.imageView.borderWidth = 5
         self.imageView.borderColor = UIColor.white
         changeState(state: true, plas: true)

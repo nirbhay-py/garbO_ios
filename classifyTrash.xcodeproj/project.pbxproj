@@ -20,6 +20,7 @@
 		1C73395C24A6257F00ED2D94 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73395B24A6257F00ED2D94 /* firstViewController.swift */; };
 		1C73395E24A6291F00ED2D94 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73395D24A6291F00ED2D94 /* registerViewController.swift */; };
 		1C73396024A6295800ED2D94 /* garboUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C73395F24A6295800ED2D94 /* garboUser.swift */; };
+		1C7E83E124AF586800679887 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E83E024AF586800679887 /* profileViewController.swift */; };
 		F52541F4CA0B7931F4F27A65 /* Pods_classifyTrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD892757D6CF7AD9FACDB3E9 /* Pods_classifyTrash.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		1C73395B24A6257F00ED2D94 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		1C73395D24A6291F00ED2D94 /* registerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		1C73395F24A6295800ED2D94 /* garboUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = garboUser.swift; sourceTree = "<group>"; };
+		1C7E83E024AF586800679887 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		63394AFED76108EBF7AD9E0D /* Pods-classifyTrash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classifyTrash.release.xcconfig"; path = "Target Support Files/Pods-classifyTrash/Pods-classifyTrash.release.xcconfig"; sourceTree = "<group>"; };
 		CD892757D6CF7AD9FACDB3E9 /* Pods_classifyTrash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_classifyTrash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				1C73395B24A6257F00ED2D94 /* firstViewController.swift */,
 				1C73395D24A6291F00ED2D94 /* registerViewController.swift */,
 				1C73395F24A6295800ED2D94 /* garboUser.swift */,
+				1C7E83E024AF586800679887 /* profileViewController.swift */,
 			);
 			path = classifyTrash;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				1C73395424A6194000ED2D94 /* trashClassifier.mlmodel in Sources */,
 				1C3FD77124A4540300350F09 /* SceneDelegate.swift in Sources */,
 				1C73395A24A6233A00ED2D94 /* Utils.swift in Sources */,
+				1C7E83E124AF586800679887 /* profileViewController.swift in Sources */,
 				1C73395C24A6257F00ED2D94 /* firstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

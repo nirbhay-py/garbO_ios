@@ -17,7 +17,7 @@ class firstViewController: UIViewController {
     @IBOutlet weak var pswdTf: UITextField!
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-//        let firebaseAuth = Auth.auth()
+        let firebaseAuth = Auth.auth()
 //        do {
 //          try firebaseAuth.signOut()
 //        } catch let signOutError as NSError {
@@ -26,8 +26,9 @@ class firstViewController: UIViewController {
           
         
         if(Auth.auth().currentUser != nil){
+            let hud = JGProgressHUD.init()
+            hud.show(in: self.view)
             print("UserAlreadyLoggedIn:\(String(describing: Auth.auth().currentUser?.email))")
-            hideElements()
             let sanitisedEmail:String=splitString(str: (Auth.auth().currentUser?.email)!, delimiter: ".")
             print("SanitisedEmail:\(sanitisedEmail)")
             let db = Database.database().reference().child("user-node")
@@ -42,8 +43,10 @@ class firstViewController: UIViewController {
                 globalUser.itemsScanned = itemsScanned
                 globalUser.plasticScanned = plasticsScanned
                 print("UserDataFetchedWithSuccess")
+                hud.dismiss()
                 self.performSegue(withIdentifier: "loginComplete", sender: nil)
               }) { (error) in
+                hud.dismiss()
                 print("ErrorOccuredWhileFetchingUserData:\(String(describing: error.localizedDescription))")
                 showAlert(msg: "We were unable to sign you in, it looks like you may have connectivity.")
             }
@@ -54,7 +57,7 @@ class firstViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
     }
     @IBAction func loginPressed(_ sender: Any) {
         if(emailTf.text==""||pswdTf.text==""){
@@ -65,7 +68,8 @@ class firstViewController: UIViewController {
             let hud = JGProgressHUD.init()
             hud.show(in:self.view)
             Auth.auth().signIn(withEmail: emailTf.text!, password: pswdTf.text!) { [weak self] authResult, error in
-                if(error != nil){
+                if(error == nil){
+                    print("errorNotNil")
                     print("UserLoggedIn:\(String(describing: Auth.auth().currentUser?.email))\nAttemptingToAccessUserDataFromFirebase")
                     let sanitisedEmail:String=splitString(str: (Auth.auth().currentUser?.email)!, delimiter: ".")
                     print("SanitisedEmail:\(sanitisedEmail)")
@@ -89,6 +93,7 @@ class firstViewController: UIViewController {
                     print("UserDetectedThreadFinished")
                 }else{
                     hud.dismiss()
+                    print(error?.localizedDescription as Any)
                     showAlert(msg: "An error occured while signing up. You may have entered incorrect credentials or may be facing internet problems.")
                 }
             }

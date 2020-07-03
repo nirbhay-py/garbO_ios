@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.5.0):
+    - Charts/Core (= 3.5.0)
+  - Charts/Core (3.5.0)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
   - Firebase/Auth (6.20.0):
@@ -93,6 +96,7 @@ PODS:
     - SPPermissions/Core
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
@@ -103,6 +107,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Charts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -125,6 +130,7 @@ SPEC REPOS:
     - SPPermissions
 
 SPEC CHECKSUMS:
+  Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
   FirebaseAuth: 648892fd0afeb27ef97c1d2e667329855f1004bc
@@ -146,6 +152,6 @@ SPEC CHECKSUMS:
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SPPermissions: a8056ef987855e8b231481f61bd8b4cbd3fcfd80
 
-PODFILE CHECKSUM: 69c801d4018b931bce4bdb3b59b29213472573ed
+PODFILE CHECKSUM: 8dd03dab2284936fd9a26c55bb411cad79b501e1
 
 COCOAPODS: 1.8.4
