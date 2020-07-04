@@ -11,37 +11,45 @@ import CoreML
 import VisionKit
 import JGProgressHUD
 import Firebase
+import Charts
 
+var predi:String=""
+var confidence_str:String!
+var plasti:String=""
 class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
-    @IBOutlet weak var classLbl: UILabel!
 
-    @IBOutlet weak var confidenceLbl: UILabel!
+    @IBOutlet weak var legendLbl: UILabel!
+    @IBOutlet weak var insideVIew: UIView!
+    @IBOutlet weak var pieChartView: PieChartView!
+    
     var pred:String=""
-    @IBOutlet weak var lbl4: UILabel!
-    @IBOutlet weak var lbl3: UILabel!
-    @IBOutlet weak var lbl2: UILabel!
-    @IBOutlet weak var lbl1: UILabel!
-    @IBOutlet weak var plasticLbl: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var infoBtn: UIButton!
     var img:UIImage!
+    @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeState(state: true,plas:true)
         print("globalUserEmail:\(String(describing: globalUser.email))")
+        if(globalUser.itemsScanned != 0){
+            pieChartView.isHidden = true
+            legendLbl.isHidden = true
+             logoView.isHidden = false
+            print("hidden")
+            if(globalUser.plasticScanned != 0){
+                setChart()
+                pieChartView.isHidden = false
+                logoView.isHidden = true
+                legendLbl.isHidden = false
+                legendLbl.text = "Plastics \(String(globalUser.plasticScanned)) and Non-plastics \(String(globalUser.itemsScanned-globalUser.plasticScanned))"
+                 print("show")
+            }else{
+                pieChartView.isHidden = true
+                legendLbl.isHidden = true
+                logoView.isHidden = false
+                 print("hidden")
+            }
+        }
     }
-    func changeState(state:Bool,plas:Bool)
-    {
-        self.classLbl.isHidden = state
-        self.lbl1.isHidden = state
-        self.lbl2.isHidden = plas
-        self.lbl4.isHidden = state
-        self.lbl3.isHidden = state
-        self.infoBtn.isHidden = state
-        self.plasticLbl.isHidden = plas
-        self.confidenceLbl
-            .isHidden = state
-    }
+
 
     @IBAction func camBtnPressed(_ sender: Any) {
         let vc = UIImagePickerController()
@@ -51,19 +59,12 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         present(vc, animated: true)
     }
     
-    @IBAction func profileBtnPressed(_ sender: Any) {
-        showInfo(msg: """
-            You've scanned \(globalUser.itemsScanned!) items with garbO
-            
-            Out of which \(globalUser.plasticScanned!) were plastic items.
-            """, title: "Your stats")
-    }
+
     @IBAction func doneBtnPressed(_ sender: Any) {
         if(self.img==nil){
             showAlert(msg: "You can't carry on without taking an image.")
             return
         }
-        changeState(state: true, plas: true)
         let hud = JGProgressHUD.init()
         hud.show(in: self.view)
         let trashModel = trashClassifier()
@@ -83,19 +84,17 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
             return
         }
         print("PredictedClass:\(trashPrediction.classLabel)")
-        self.pred = trashPrediction.classLabel
+        predi = trashPrediction.classLabel
+        print(predi)
         var confidence = trashPrediction.classLabelProbs[trashPrediction.classLabel]
         confidence! *= 100
         confidence! = confidence!.round(to: 2)
         let cString:String = String(format:"%.1f", confidence as! CVarArg)
+        confidence_str = cString
         print("Confidence:\(confidence!))")
         var plasticsScanned:Int!
         var itemsScanned:Int!
         if(trashPrediction.classLabel != "plastic"){
-            showSuccess(msg:"Yay! We know what that looks like!")
-            changeState(state: false, plas: true)
-            self.classLbl.text = trashPrediction.classLabel + " trash"
-            self.confidenceLbl.text = String(cString) + "%"
             let userNode = Database.database().reference().child("user-node").child(splitString(str: globalUser.email, delimiter: "."))
             userNode.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -103,7 +102,6 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
                 itemsScanned = value?["items-scanned"] as? Int ?? 0
                 print("UserDataFetchedWithSuccess")
                 let updates:[String:Any]=["items-scanned":itemsScanned+1]
-                
                 userNode.updateChildValues(updates) {(error,ref) in
                     if(error != nil){
                         hud.dismiss()
@@ -111,6 +109,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
                         print("ErrorOccuredWhileUpdatingUserData:\(String(describing: error!.localizedDescription))")
                     }else{
                         hud.dismiss()
+                        self.performSegue(withIdentifier: "res", sender: nil)
                         globalUser.itemsScanned+=1
                         
                     }
@@ -119,14 +118,10 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
                 print("ErrorOccuredWhileFetchingUserData:\(String(describing: error.localizedDescription))")
                 hud.dismiss()
                 showAlert(msg: "We were unable to connect to our servers, you may be facing connectivity issues at the moment.")
-                
             }
-            
-
             hud.dismiss()
         }
         else{
-            changeState(state: false, plas: false)
             print("PlasticDetected\nRunningPlasticClassifer")
             guard let plasticPrediction = try? plasticModel.prediction(image: imgBuffer)
             else {
@@ -136,17 +131,15 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
                 return
             }
             print("PredictedPlasticClass:\(plasticPrediction.classLabel)")
-            showSuccess(msg:"Yay! We know what that looks like!")
             var confidence = plasticPrediction.classLabelProbs[plasticPrediction.classLabel]
             confidence! *= 100
             confidence! = confidence!.round(to: 2)
             let cString:String = String(format:"%.1f", confidence as! CVarArg)
             print("Confidence:\(confidence!))")
-            changeState(state: false, plas: false)
-            self.classLbl.text = trashPrediction.classLabel + " trash"
+            predi = trashPrediction.classLabel + " trash"
             var plasticType = plasticPrediction.classLabel
-            self.plasticLbl.text = "a " + sanitisePlasticInput(str:plasticType)
-            self.confidenceLbl.text = String(cString) + "%"
+            plasti = "a " + sanitisePlasticInput(str:plasticType)
+            confidence_str = String(cString) + "%"
             let userNode = Database.database().reference().child("user-node").child(splitString(str: globalUser.email, delimiter: "."))
             userNode.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -174,6 +167,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
             hud.dismiss()
         }
         print("DetectionProcessedFinishedWithSuccess")
+        self.performSegue(withIdentifier: "res", sender: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -185,10 +179,8 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         }
         print("OriginalSize:\(image.size)")
         self.imageView.image = image
-        self.imageView.roundedImage()
         self.imageView.borderWidth = 5
         self.imageView.borderColor = UIColor.white
-        changeState(state: true, plas: true)
         self.img = image
     }
     func sanitisePlasticInput(str:String)->String{
@@ -202,63 +194,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         }
         return newStr
     }
-    @IBAction func infoBtnPressed(_ sender: Any) {
-        var msg:String!
-        if(self.pred=="cardboard"){
-            showInfo(msg: """
-            Yes! Cardboard can be recycled in fact it can be recycled up to 5 times.
 
-            A country can create upto 400 billion square feet of cardboard in a year!
-
-            By recycling cardboard, you would be saving 50% of the pollution that would have been released if you trashed it!
-        """, title: "Recycle it!")
-        }else if(self.pred=="plastic")
-        {
-            showInfo(msg: """
-            More than 8 million tonnes of plastic is dumped into the ocean every year!
-
-            Only 8% of totally recyclable plastic actually ends up getting recycled
-
-            Over 90% of bird species are chewing on your plastic right now!
-
-            """, title: "Recycle it!")
-        }else if(self.pred=="organic"){
-            showInfo(msg: """
-            Try finding a compost site nearby!
-
-            You can save over 25% of your waste if you decide to compost your organic waste
-
-            You can save 10 people from respiratory diseases. This waste is likely to be burnt and worsen the AQI in your city
-
-            """, title: "Use it as compost!")
-        }else if(self.pred=="paper"){
-            showInfo(msg: """
-            Paper produced from recycled paper represents an energy saving of 70%
-
-            As you read this information, over 200 tonnes of paper was just produced
-
-            The newspaper you receive everyday is made up of 75,000 tress
-
-
-            """, title: "Recycle it!")
-        }
-        else if(self.pred=="metal"){
-            showInfo(msg: """
-            If you have any sort of electronic waste, please employ e-waste recycling options.
-
-            Making new products from recycled steel cans helps save up to 75% of the energy and 40% of the water needed to make steel from raw materials
-
-
-
-            """, title: "Maybe recycable")
-        }
-        else {
-            showInfo(msg: """
-            You can recycle glass!
-            Try finding a recycling plant nearby!
-            """, title: "Recycle it!")
-        }
-    }
     
     func buffer(from image: UIImage) -> CVPixelBuffer? {
       let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
@@ -281,7 +217,24 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
 
       return pixelBuffer
     }
+        func setChart() {
+            let plastics = PieChartDataEntry(value: Double(globalUser.plasticScanned!))
+            let nonPlastics = PieChartDataEntry(value: Double(globalUser.itemsScanned-globalUser.plasticScanned))
+            let dataset = PieChartDataSet(entries:[plastics,nonPlastics],label:"Plastics vs Non-plastics")
+            dataset.colors = ChartColorTemplates.material()
+            dataset.drawValuesEnabled = false
+            pieChartView.legend.font = UIFont.systemFont(ofSize: 20)
+            pieChartView.chartDescription?.textAlign = NSTextAlignment.left
+            pieChartView.legend.enabled = false
+            pieChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+            let data = PieChartData(dataSet: dataset)
+            pieChartView.data = data
+            pieChartView.notifyDataSetChanged()
+
+        }
+
 }
+
 
 extension UIImage {
   func resizeImage(targetSize: CGSize) -> UIImage {
@@ -296,5 +249,4 @@ extension UIImage {
     UIGraphicsEndImageContext()
     return newImage!
   }
-    }
-
+}

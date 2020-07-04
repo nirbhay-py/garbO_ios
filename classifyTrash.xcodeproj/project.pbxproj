@@ -13,6 +13,7 @@
 		1C3FD77624A4540300350F09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3FD77424A4540300350F09 /* Main.storyboard */; };
 		1C3FD77824A4540700350F09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C3FD77724A4540700350F09 /* Assets.xcassets */; };
 		1C3FD77B24A4540700350F09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3FD77924A4540700350F09 /* LaunchScreen.storyboard */; };
+		1C6F0DC224B0EF31000B629E /* resViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6F0DC124B0EF31000B629E /* resViewController.swift */; };
 		1C73395424A6194000ED2D94 /* trashClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1C73395324A6194000ED2D94 /* trashClassifier.mlmodel */; };
 		1C73395624A6196200ED2D94 /* plasticClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1C73395524A6196200ED2D94 /* plasticClassifier.mlmodel */; };
 		1C73395824A6221B00ED2D94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C73395724A6221B00ED2D94 /* GoogleService-Info.plist */; };
@@ -34,6 +35,7 @@
 		1C3FD77724A4540700350F09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C3FD77A24A4540700350F09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C3FD77C24A4540700350F09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C6F0DC124B0EF31000B629E /* resViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resViewController.swift; sourceTree = "<group>"; };
 		1C73395324A6194000ED2D94 /* trashClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = trashClassifier.mlmodel; sourceTree = "<group>"; };
 		1C73395524A6196200ED2D94 /* plasticClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = plasticClassifier.mlmodel; sourceTree = "<group>"; };
 		1C73395724A6221B00ED2D94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				1C73395D24A6291F00ED2D94 /* registerViewController.swift */,
 				1C73395F24A6295800ED2D94 /* garboUser.swift */,
 				1C7E83E024AF586800679887 /* profileViewController.swift */,
+				1C6F0DC124B0EF31000B629E /* resViewController.swift */,
 			);
 			path = classifyTrash;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				1C73395424A6194000ED2D94 /* trashClassifier.mlmodel in Sources */,
 				1C3FD77124A4540300350F09 /* SceneDelegate.swift in Sources */,
 				1C73395A24A6233A00ED2D94 /* Utils.swift in Sources */,
+				1C6F0DC224B0EF31000B629E /* resViewController.swift in Sources */,
 				1C7E83E124AF586800679887 /* profileViewController.swift in Sources */,
 				1C73395C24A6257F00ED2D94 /* firstViewController.swift in Sources */,
 			);
