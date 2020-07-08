@@ -12,7 +12,6 @@ class resViewController: UIViewController {
     @IBOutlet weak var confidenceLbl: UILabel!
     @IBOutlet weak var lbl1: UILabel!
     @IBOutlet weak var predLbl: UILabel!
-    
     @IBOutlet weak var plasticLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +19,7 @@ class resViewController: UIViewController {
             plasticLbl.isHidden = true
             lbl1.isHidden = true
         }
+        if(!predi.hasSuffix(" trash")) {predi+=" trash"}
         print(predi)
         plasticLbl.text = plasti
         confidenceLbl.text = confidence_str + "%"

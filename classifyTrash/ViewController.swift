@@ -39,7 +39,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
                 pieChartView.isHidden = false
                 logoView.isHidden = true
                 legendLbl.isHidden = false
-                legendLbl.text = "Plastics \(String(globalUser.plasticScanned)) and Non-plastics \(String(globalUser.itemsScanned-globalUser.plasticScanned))"
+                legendLbl.text = "Plastics- \(String(globalUser.plasticScanned))  Non-plastics- \(String(globalUser.itemsScanned-globalUser.plasticScanned))"
                  print("show")
             }else{
                 pieChartView.isHidden = true
@@ -61,6 +61,9 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     
 
     @IBAction func doneBtnPressed(_ sender: Any) {
+        predi = ""
+        plasti = ""
+        confidence_str = ""
         if(self.img==nil){
             showAlert(msg: "You can't carry on without taking an image.")
             return
