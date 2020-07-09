@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>"We need access to your camera to determine to help us help you classify your trash."</string>
+	<string>&quot;We need access to your camera to determine to help us help you classify your trash.&quot;</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -63,6 +63,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
-	<string>"Light"</string>
+	<string>&apos;Light&apos;</string>
 </dict>
 </plist>
