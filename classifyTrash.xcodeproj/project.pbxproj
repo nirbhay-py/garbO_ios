@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		133D47E244E4BFA87C329DCF /* Pods-classifyTrash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classifyTrash.debug.xcconfig"; path = "Target Support Files/Pods-classifyTrash/Pods-classifyTrash.debug.xcconfig"; sourceTree = "<group>"; };
-		1C3FD76B24A4540300350F09 /* GARBO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GARBO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3FD76B24A4540300350F09 /* Garbify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Garbify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3FD76E24A4540300350F09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C3FD77024A4540300350F09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1C3FD77224A4540300350F09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		1C3FD76C24A4540300350F09 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C3FD76B24A4540300350F09 /* GARBO.app */,
+				1C3FD76B24A4540300350F09 /* Garbify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			);
 			name = classifyTrash;
 			productName = classifyTrash;
-			productReference = 1C3FD76B24A4540300350F09 /* GARBO.app */;
+			productReference = 1C3FD76B24A4540300350F09 /* Garbify.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -390,15 +390,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W6324DDDJ;
+				DEVELOPMENT_TEAM = CG7WK9K54U;
 				INFOPLIST_FILE = classifyTrash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.NirbhaySingh.classifyTrash;
-				PRODUCT_NAME = GARBO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KushPandey.classifyTrash;
+				PRODUCT_NAME = Garbify;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -410,15 +410,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4W6324DDDJ;
+				DEVELOPMENT_TEAM = CG7WK9K54U;
 				INFOPLIST_FILE = classifyTrash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.NirbhaySingh.classifyTrash;
-				PRODUCT_NAME = GARBO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KushPandey.classifyTrash;
+				PRODUCT_NAME = Garbify;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

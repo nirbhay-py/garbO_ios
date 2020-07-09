@@ -10,13 +10,14 @@
         <!--First View Controller-->
         <scene sceneID="Ld1-Rh-OO8">
             <objects>
-                <viewController id="Qph-Q0-tFI" customClass="firstViewController" customModule="GARBO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qph-Q0-tFI" customClass="firstViewController" customModule="Garbify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1e-Xa-PQ7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2OG-FM-onx">
                                 <rect key="frame" x="40" y="304.5" width="295" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="PHz-md-J39"/>
                                 </constraints>
@@ -29,6 +30,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PpZ-Zd-kXV">
                                 <rect key="frame" x="40" y="379.5" width="295" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="jfj-NZ-UCT"/>
                                     <constraint firstAttribute="height" constant="45" id="qB5-7F-Mii"/>
@@ -122,7 +124,7 @@
         <!--Register View Controller-->
         <scene sceneID="mLH-X1-enx">
             <objects>
-                <viewController id="nc1-8n-cSY" customClass="registerViewController" customModule="GARBO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nc1-8n-cSY" customClass="registerViewController" customModule="Garbify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="spv-S5-iJP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +137,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qI7-pc-jKy">
                                 <rect key="frame" x="40" y="210" width="295" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="FVX-UD-byJ"/>
                                 </constraints>
@@ -153,6 +156,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vs7-9U-E3D">
                                 <rect key="frame" x="40" y="326.5" width="295" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JIw-2B-d94"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="mXR-eh-nwV"/>
@@ -172,6 +176,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipu-pg-ggL">
                                 <rect key="frame" x="40" y="443" width="295" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="9Tc-Nt-fZg"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="9rC-9A-HZ5"/>
@@ -270,12 +275,12 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GARBO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Garbify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdi-Y1-7qf" customClass="DesignableButton" customModule="GARBO" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdi-Y1-7qf" customClass="DesignableButton" customModule="Garbify" customModuleProvider="target">
                                 <rect key="frame" x="40" y="40" width="150" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -307,7 +312,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-c1-5Lj" customClass="DesignableButton" customModule="GARBO" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-c1-5Lj" customClass="DesignableButton" customModule="Garbify" customModuleProvider="target">
                                 <rect key="frame" x="40" y="191" width="150" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -505,7 +510,7 @@
         <!--Res View Controller-->
         <scene sceneID="Uqv-eu-1Zo">
             <objects>
-                <viewController id="iPI-EM-aLw" customClass="resViewController" customModule="GARBO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iPI-EM-aLw" customClass="resViewController" customModule="Garbify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z7I-YS-4yb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,8 +678,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w6D-tm-1ek"/>
-        <segue reference="ihf-gO-Pjw"/>
+        <segue reference="nO1-1C-sGC"/>
         <segue reference="Msy-nB-Riq"/>
     </inferredMetricsTieBreakers>
     <resources>
